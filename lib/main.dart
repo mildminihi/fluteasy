@@ -50,35 +50,42 @@ class _MyHomePageState extends State<MyHomePage> {
                 style: TextStyle(fontSize: 14.0),
               ),
             ),
-            const Text("My watch list", textAlign: TextAlign.start),
+            Align(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  margin: const EdgeInsets.all(10.0),
+                  child:
+                      Text("My watch list", style: TextStyle(fontSize: 18.0)),
+                )),
             Container(
-              margin: const EdgeInsets.symmetric(vertical: 20.0),
-              height: 200.0,
-              child: ListView(
-                // This next line does the trick.
-                scrollDirection: Axis.horizontal,
-                children: <Widget>[
-                  Container(
-                    width: 160.0,
-                    color: Colors.red,
-                  ),
-                  Container(
-                    width: 160.0,
-                    color: Colors.blue,
-                  ),
-                  Container(
-                    width: 160.0,
-                    color: Colors.green,
-                  ),
-                  Container(
-                    width: 160.0,
-                    color: Colors.yellow,
-                  ),
-                  Container(
-                    width: 160.0,
-                    color: Colors.orange,
-                  ),
-                ],
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
+                height: 200.0,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 3,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      width: MediaQuery.of(context).size.width * 0.5,
+                      child: Card(
+                        color: Colors.deepPurpleAccent,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                        elevation: 8,
+                        child: Container(
+                          child: Center(
+                            child: Column(children: [
+                              Image.network(
+                                  "https://mildspace.files.wordpress.com/2021/12/giveban.png?w=1680"),
+                              Text("test1")
+                            ]),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
           ],
