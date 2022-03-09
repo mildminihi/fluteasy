@@ -30,6 +30,40 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  Container cardListView() {
+    return Container(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
+        height: 200.0,
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: 3,
+          itemBuilder: (context, index) {
+            return Container(
+              width: MediaQuery.of(context).size.width * 0.5,
+              child: Card(
+                color: Colors.deepPurpleAccent,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+                elevation: 8,
+                child: Container(
+                  child: Center(
+                    child: Column(children: [
+                      Image.network(
+                          "https://mildspace.files.wordpress.com/2021/12/giveban.png?w=1680"),
+                      Text("test1")
+                    ]),
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,37 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child:
                       Text("My watch list", style: TextStyle(fontSize: 18.0)),
                 )),
-            Container(
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
-                height: 200.0,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 3,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      width: MediaQuery.of(context).size.width * 0.5,
-                      child: Card(
-                        color: Colors.deepPurpleAccent,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12.0),
-                        ),
-                        elevation: 8,
-                        child: Container(
-                          child: Center(
-                            child: Column(children: [
-                              Image.network(
-                                  "https://mildspace.files.wordpress.com/2021/12/giveban.png?w=1680"),
-                              Text("test1")
-                            ]),
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ),
-            ),
+            cardListView(),
           ],
         ),
       ),
